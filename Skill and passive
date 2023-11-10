@@ -1,0 +1,15 @@
+Skills and Passives :
+
+    Skills :
+        1. Slash            : Do 100% damage (ATK)
+        2. Punch            : Do 70% damage (ATK) , have 20% chance to stun the enemy for 1 turn
+        3. Wall             : Do 80% damage (DEF)
+        4. Sap              : Do 70% damage (HP) , recover 50% of the damage dealt
+        5. Double slash     : Do 45% damage (ATK) , do another 50% damage at the end of the turn
+        6. Stab             : Do 60% damage (ATK) , have 35% chance to do double the damage
+
+    Passive:
+        1. Defend break     : Reduce enemy's DEF by 10% each attack
+        2. Attack break     : Reduce enemy's ATK by 2 each attack
+        3. Rejuvenation     : Recover 15% of user's HP each turn
+        4. Hide             : Have 20% chance to reduce a/ll incoming damage next turn after the turn ended 
