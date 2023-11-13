@@ -2,31 +2,30 @@
 
 import random
 
-def damage_calculate(attacker = int , defender = int , damage_reduction=int):
-    damage = int
-    minimal = attacker/20
+def damage_calculate(attacker = int , defender = int ):
+    minimal = int(attacker/20)
     
     if attacker<defender:
-        damage = minimal + (attacker*attacker/defender)-(100*damage_reduction*attacker)
+        damage = (minimal + attacker*attacker) / (defender * 0.1)
     else:
-        damage = minimal + (attacker*2/defender)-(100*damage_reduction*attacker)
+        damage = (minimal + attacker*2) / (defender * 0.1)
 
     # In case the damage reduction is too much
-    if damage<=0:
-        damage=minimal
+    if damage <= 0:
+        damage = minimal
     else:
         pass
 
-    return damage
+    return int(damage)
 
 def user_took_damage(user_HP = int , damage_took = int):
-    user_curruent_HP = user_HP-damage_took
+    user_HP -= damage_took
 
     # In case player HP is displayed as negative number on the terminal
-    if user_curruent_HP<=0:
-        user_curruent_HP=0
+    if user_HP <= 0:
+        user_HP = 0
 
-    return user_curruent_HP
+    return user_HP
 
 def user_heal(user_curruent_hp = int , heal_amount = int , user_max_hp = int):
     user_curruent_hp+=heal_amount*(random.randint(70,100)/100)
@@ -42,13 +41,26 @@ def user_stat_up(stat = int , amount = int , stat_type = str):
 
     # In case the stats went above the maximum stat
     if stat_type.lower() == "atk":
-        if stat > 150:
+        if stat > 200:
+            print("ATK cannot go above 200 !")
             stat = 200
     elif stat_type.lower() == "def":
         if stat > 50:
+            print("DEF cannot go above 50 !")
             stat = 50
     elif stat_type.lower() == "spd":
         if stat > 150:
+            print("SPD cannot go above 150 !")
             stat = 150
+
+    return stat
+
+def user_stat_down(stat = int , amount = int , stat_type = str):
+    stat -= amount
+
+    # Lowest possible stat is 10 for each stat
+    if stat < 10:
+        print(f"{stat_type} cannot go any lower than 10 !")
+        stat=10
 
     return stat

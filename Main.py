@@ -2,7 +2,9 @@
 
 import os
 import random
-# My mpduels or whatever it called
+import time
+
+# My moduels or whatever it called
 import Heroes
 import Damage
 
@@ -38,14 +40,23 @@ def main():
 
     os.system("clear")
 
-    if boss.spd > player_data.get_spd():
+    if boss.spd > player_data.spd:
         turn_1 = boss
         turn_2 = player_data
+    elif boss.spd == player_data.spd :
+        r = random.randint(1,2)
+        if r == 1 :
+            turn_1 = boss
+            turn_2 = player_data
+        else :
+            turn_2 = boss
+            turn_1 = player_data
     else:
         turn_2 = boss
         turn_1 = player_data
 
     while True:
+        time.sleep(2)
         print("===============================================================================")
         print("You  : ")
         print("Name     HP  ATK  DEF  SPD")
@@ -71,9 +82,9 @@ def main():
                 print(f"{turn_1.name} did {a} damage to {turn_2.name} !")
                 turn_counter = 2
             else :
-                a = Damage.damage_calculate(turn_2.atk,turn_1.defend)
+                b = Damage.damage_calculate(turn_2.atk,turn_1.defend)
                 turn_1.hp = Damage.user_took_damage(turn_1.hp,a)
-                print(f"{turn_2.name} did {a} damage to {turn_1.name} !")
+                print(f"{turn_2.name} did {b} damage to {turn_1.name} !")
                 turn_counter = 1
         
 main()
