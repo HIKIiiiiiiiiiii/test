@@ -7,7 +7,7 @@ import time
 # My moduels or whatever it called
 import Heroes
 import Damage
-
+import Heroes_list as hl
 
 
 def main():
@@ -23,10 +23,10 @@ def main():
     print("Please select your hero : ")
     print("ID Name     HP  ATK  DEF  SPD\n ")
 
-    for i in range(len(Heroes.hero_list)):
-        print(f"{Heroes.hero_list[i].get_id()}  {Heroes.hero_list[i].get_name()} ",end="")
-        print(f"{Heroes.hero_list[i].get_hp()} {Heroes.hero_list[i].get_atk()} ",end="")
-        print(f"{Heroes.hero_list[i].get_defend()} {Heroes.hero_list[i].get_spd()} \n")
+    for i in range(len(hl.hero_list)):
+        print(f"{hl.hero_list[i].get_id()}  {hl.hero_list[i].get_name()} ",end="")
+        print(f"{hl.hero_list[i].get_hp()} {hl.hero_list[i].get_atk()} ",end="")
+        print(f"{hl.hero_list[i].get_defend()} {hl.hero_list[i].get_spd()} \n")
 
     while True:
         user_input = input("Input a number indicated to the fighter : ")
@@ -35,7 +35,7 @@ def main():
             print("Please input a number")
             continue
         else:
-            player_data = Heroes.hero_list[int(user_input)-1]
+            player_data = hl.hero_list[int(user_input)-1]
             break
 
     os.system("clear")
@@ -83,7 +83,7 @@ def main():
                 turn_counter = 2
             else :
                 b = Damage.damage_calculate(turn_2.atk,turn_1.defend)
-                turn_1.hp = Damage.user_took_damage(turn_1.hp,a)
+                turn_1.hp = Damage.user_took_damage(turn_1.hp,b)
                 print(f"{turn_2.name} did {b} damage to {turn_1.name} !")
                 turn_counter = 1
         

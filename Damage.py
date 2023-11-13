@@ -2,19 +2,20 @@
 
 import random
 
-def damage_calculate(attacker = int , defender = int ):
-    minimal = int(attacker/20)
+def damage_calculate(attacker = int , defender = int , crit = False):
+    minimal = attacker/20
     
     if attacker<defender:
-        damage = (minimal + attacker*attacker) / (defender * 0.1)
+        damage = (minimal + attacker*attacker) / (defender * 0.9)
     else:
-        damage = (minimal + attacker*2) / (defender * 0.1)
+        damage = (minimal + attacker*2) - (defender * 0.9)
 
     # In case the damage reduction is too much
     if damage <= 0:
         damage = minimal
-    else:
-        pass
+    
+    if crit == True:
+        damage*=2
 
     return int(damage)
 
